@@ -38,7 +38,7 @@ export function Home() {
         Conheça nosso menu
       </h2>
 
-      <main className="grid lg:grid-cols-2 gap-4 px-2 mb-8">
+      <main className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2 mb-8 mx-auto max-w-7xl">
         {/* Cards */}
 
         {/* Card 1 */}
