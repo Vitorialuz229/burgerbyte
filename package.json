@@ -1,5 +1,5 @@
 {
-  "name": "scaffold",
+  "name": "burguerbyte",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,10 +8,10 @@
     "build": "tsc -b && vite build"
   },
   "dependencies": {
+    "burguerbyte": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.0.2",
-    "scaffold": "file:"
+    "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
