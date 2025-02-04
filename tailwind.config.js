@@ -7,7 +7,11 @@ export default {
   theme: {
     fontFamily:{
     },
-    extend: {},
+    extend: {
+      backgroundImage: { 
+        "home": "url('/src/assets/bg.png')",
+      }
+    },
   },
   plugins: [],
 }
