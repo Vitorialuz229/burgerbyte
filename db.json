@@ -56,5 +56,79 @@
       "price": 18.00,
       "image": "src/assets/hamb8.png"
     }
+  ], 
+  "bebidas": [
+    { 
+      "id": 1,
+      "name": "Coca-Cola",
+      "price": 5.00,
+      "image": "src/assets/refri1.png"
+    }, 
+    { 
+      "id": 2,
+      "name": "Guaraná Antártica",
+      "price": 5.00,
+      "image": "src/assets/refri2.png"
+    }, 
+    { 
+      "id": 3,
+      "name": "Fanta Guaraná Antártica",
+      "price": 5.00,
+      "image": "src/assets/refri3.png"
+    }, 
+    { 
+      "id": 4,
+      "name": "Coca Cola Zero",
+      "price": 5.00,
+      "image": "src/assets/refri4.png"
+    }, 
+    {
+      "id": 5,
+      "name": "Fanta",
+      "price": 5.00,
+      "image": "src/assets/refri5.png"
+    },
+    { 
+      "id": 6,
+      "name": "Água com Gás",
+      "price": 3.00,
+      "image": "src/assets/aguaComGas.jpg"
+    }, 
+    { 
+      "id": 7,
+      "name": "Água sem Gás",
+      "price": 3.00,
+      "image": "src/assets/aguaMineral.png"
+    }, 
+    { 
+      "id": 8, 
+      "name": "Cerveja Beck's",
+      "price": 8.00,
+      "image": "src/assets/cerveja1.jpg"
+    }, 
+    { 
+      "id": 9,
+      "name": "Cerveja Budweiser Zero",
+      "price": 8.00,
+      "image": "src/assets/cerveja2.jpg"
+    }, 
+    { 
+      "id": 10,
+      "name": "Choop",
+      "price": 8.00,
+      "image": "src/assets/cerveja3.jpg"
+    }, 
+    { 
+      "id": 11,
+      "name": "Chopp Brahma",
+      "price": 8.00,
+      "image": "src/assets/cerveja4.jpg"
+    }, 
+    { 
+      "id": 12,
+      "name": "Cerveja Corona",
+      "price": 8.00,
+      "image": "src/assets/cerveja5.jpg"
+    }
   ]
 }
