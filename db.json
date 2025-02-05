@@ -56,78 +56,90 @@
       "price": 18.00,
       "image": "src/assets/hamb8.png"
     }
-  ], 
+  ],
   "bebidas": [
-    { 
+    {
       "id": 1,
       "name": "Coca-Cola",
       "price": 5.00,
+      "description": "Refresco clássico, doce e gaseificado com sabor único. Ideal para acompanhar um hambúrguer! 🥤",
       "image": "src/assets/refri1.png"
-    }, 
-    { 
+    },
+    {
       "id": 2,
       "name": "Guaraná Antártica",
       "price": 5.00,
+      "description": "Sabor refrescante e naturalmente brasileiro, o guaraná é perfeito para todos os momentos. 🥤",
       "image": "src/assets/refri2.png"
-    }, 
-    { 
+    },
+    {
       "id": 3,
       "name": "Fanta Guaraná Antártica",
       "price": 5.00,
+      "description": "Uma mistura irresistível de guaraná com o sabor de laranja, refrescante e doce na medida certa! 🍊🥤",
       "image": "src/assets/refri3.png"
-    }, 
-    { 
+    },
+    {
       "id": 4,
       "name": "Coca Cola Zero",
       "price": 5.00,
+      "description": "A clássica Coca-Cola sem açúcar, para quem busca o sabor tradicional sem calorias. 🥤",
       "image": "src/assets/refri4.png"
-    }, 
+    },
     {
       "id": 5,
       "name": "Fanta",
       "price": 5.00,
+      "description": "Sabor de laranja vibrante, ideal para acompanhar seu hambúrguer com muito frescor! 🍊🥤",
       "image": "src/assets/refri5.png"
     },
-    { 
+    {
       "id": 6,
       "name": "Água com Gás",
       "price": 3.00,
+      "description": "Água mineral com gás, perfeita para quem procura um toque refrescante e leve. 💧",
       "image": "src/assets/aguaComGas.jpg"
-    }, 
-    { 
+    },
+    {
       "id": 7,
       "name": "Água sem Gás",
       "price": 3.00,
+      "description": "Água mineral pura e refrescante, ideal para hidratar sem aditivos. 💧",
       "image": "src/assets/aguaMineral.png"
-    }, 
-    { 
-      "id": 8, 
+    },
+    {
+      "id": 8,
       "name": "Cerveja Beck's",
-      "price": 8.00,
+      "price": 16.00,
+      "description": "Cerveja lager premium, refrescante e de sabor equilibrado. Para quem aprecia um bom chopp! 🍺",
       "image": "src/assets/cerveja1.jpg"
-    }, 
-    { 
+    },
+    {
       "id": 9,
       "name": "Cerveja Budweiser Zero",
-      "price": 8.00,
+      "price": 16.00,
+      "description": "A versão sem álcool da tradicional Budweiser, para quem quer o sabor de uma boa cerveja sem álcool. 🍺",
       "image": "src/assets/cerveja2.jpg"
-    }, 
-    { 
+    },
+    {
       "id": 10,
       "name": "Choop",
-      "price": 8.00,
+      "price": 10.00,
+      "description": "Chopp fresco e gelado, com sabor leve e cremoso. Refrescante e saboroso! 🍻",
       "image": "src/assets/cerveja3.jpg"
-    }, 
-    { 
+    },
+    {
       "id": 11,
       "name": "Chopp Brahma",
-      "price": 8.00,
+      "price": 10.00,
+      "description": "Cerveja Brahma no estilo chopp, com sabor suave e refrescante, perfeito para acompanhar seu lanche. 🍻",
       "image": "src/assets/cerveja4.jpg"
-    }, 
-    { 
+    },
+    {
       "id": 12,
       "name": "Cerveja Corona",
-      "price": 8.00,
+      "price": 16.00,
+      "description": "Cerveja mexicana com sabor leve e refrescante, ideal para dias quentes. 🍺",
       "image": "src/assets/cerveja5.jpg"
     }
   ]
