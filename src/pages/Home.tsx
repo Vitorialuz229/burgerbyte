@@ -129,6 +129,19 @@ export function Home() {
           </div>
         ))}
       </div>
+
+
+
+      {/* Footer */}
+      <footer className="w-full text-xl bg-red-500 py-3 fixed bottom-0 z-40 flex justify-center items-center">
+        <button className="flex text-white items-center gap-2 font-bold"
+        id="cart-button"
+        >
+          (<span id="card-count"> 2 </span>)
+          Veja meu carrinho
+          <ShoppingCart size={25} className="text-white" />
+        </button>
+      </footer>
     </div>
   );
 }
