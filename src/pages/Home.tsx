@@ -9,9 +9,14 @@ export function Home() {
   const [bebidas, setBebidas] = useState<Bebidas[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const cartButtonRef = useRef<HTMLButtonElement | null>(null);
   const cartModelRef = useRef<HTMLDivElement | null>(null);
+
+  const [cartItens, setCartItens] = useState<
+    { id: number; name: string; price: number; quantity: number }[]
+  >([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/hamburgueres")
@@ -27,10 +32,8 @@ export function Home() {
       .catch((error) => console.error("Erro ao buscar os bebidas", error));
   }, []);
 
-  // Abre ou fecha o modal do carrinho
   const toggleCartModal = () => setIsModalOpen((prev) => !prev);
 
-  // Fecha o modal ao clicar fora dele
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -45,6 +48,25 @@ export function Home() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const addToCart = (item: { id: number; name: string; price: number }) => {
+    setCartItens((prevItens) => {
+      const itemIndex = prevItens.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+      if (itemIndex >= 0) {
+        prevItens[itemIndex].quantity++;
+        return [...prevItens];
+      }
+      return [...prevItens, { ...item, quantity: 1 }];
+    });
+  };
+
+  useEffect(() => {
+    setTotalPrice(
+      cartItens.reduce((acc, item) => acc + item.price * item.quantity, 0)
+    );
+  }, [cartItens]);
 
   return (
     <div className="bg-gray-100 flex flex-col items-center">
@@ -68,19 +90,33 @@ export function Home() {
         </div>
       </header>
 
-      <h2 className="text-2xl font-bold text-center mt-9 mb-6">Conheça nosso menu</h2>
+      <h2 className="text-2xl font-bold text-center mt-9 mb-6">
+        Conheça nosso menu
+      </h2>
 
-      {/* Cards de Hamburguer */}
+      {/* Card de Hamburguer */}
       <main className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2 mb-8 max-w-7xl">
         {hamburgueres.map((hamburguer) => (
-          <div key={hamburguer.id} className="flex p-4 shadow-md bg-white rounded-lg">
-            <img src={hamburguer.image} alt={hamburguer.name} className="w-28 h-28 rounded-md" />
+          <div
+            key={hamburguer.id}
+            className="flex p-4 shadow-md bg-white rounded-lg"
+          >
+            <img
+              src={hamburguer.image}
+              alt={hamburguer.name}
+              className="w-28 h-28 rounded-md"
+            />
             <div className="ml-4">
               <p className="text-lg font-bold">{hamburguer.name}</p>
               <p className="text-lg text-gray-600">{hamburguer.description}</p>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-base font-semibold">R$ {hamburguer.price.toFixed(2)}</span>
-                <button className="bg-black px-4 py-2 rounded shadow-lg" onClick={() => setCartCount(cartCount + 1)}>
+                <span className="text-base font-semibold">
+                  R$ {hamburguer.price.toFixed(2)}
+                </span>
+                <button
+                  className="bg-black px-4 py-2 rounded shadow-lg"
+                  onClick={() => addToCart(hamburguer)}
+                >
                   <ShoppingCart size={18} className="text-white" />
                 </button>
               </div>
@@ -93,17 +129,29 @@ export function Home() {
         <h2 className="font-bold text-3xl">Bebidas</h2>
       </div>
 
-      {/* Cards de Bebidas */}
+      {/* Card de Bebidas */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2 max-w-7xl">
         {bebidas.map((bebida) => (
-          <div key={bebida.id} className="flex p-4 shadow-md bg-white rounded-lg">
-            <img src={bebida.image} alt={bebida.name} className="w-28 h-28 rounded-md" />
+          <div
+            key={bebida.id}
+            className="flex p-4 shadow-md bg-white rounded-lg"
+          >
+            <img
+              src={bebida.image}
+              alt={bebida.name}
+              className="w-28 h-28 rounded-md"
+            />
             <div className="ml-4">
               <p className="text-lg font-bold">{bebida.name}</p>
               <p className="text-lg text-gray-600">{bebida.description}</p>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-base font-semibold">R$ {bebida.price.toFixed(2)}</span>
-                <button className="bg-black px-4 py-2 rounded shadow-lg" onClick={() => setCartCount(cartCount + 1)}>
+                <span className="text-base font-semibold">
+                  R$ {bebida.price.toFixed(2)}
+                </span>
+                <button
+                  className="bg-black px-4 py-2 rounded shadow-lg"
+                  onClick={() => addToCart(bebida)}
+                >
                   <ShoppingCart size={18} className="text-white" />
                 </button>
               </div>
@@ -112,14 +160,42 @@ export function Home() {
         ))}
       </div>
 
+      {/* Card de Modal */}
       {isModalOpen && (
-        <div className="bg-black/60 w-full h-full fixed top-0 left-0 flex items-center justify-center" ref={cartModelRef}>
+        <div
+          className="bg-black/60 w-full h-full fixed top-0 left-0 flex items-center justify-center"
+          ref={cartModelRef}
+        >
           <div className="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px] max-w-[500px]">
-            <h2 className="text-center font-bold text-2xl mb-4">Meu carrinho</h2>
-            <p className="font-bold text-lg">Total: <span>R$ 0.00</span></p>
+            <h2 className="text-center font-bold text-2xl mb-4">
+              Meu carrinho
+            </h2>
+            {cartItens.length > 0 ? (
+              <ul>
+                {cartItens.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex justify-between items-center border-b py-2"
+                  >
+                    <span className="text-lg font-semibold">
+                      {item.name} (x{item.quantity})
+                    </span>
+                    <span className="text-lg font-semibold">
+                      R$ {(item.price * item.quantity).toFixed(2)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-center text-gray-600">
+                Seu carrinho está vazio.
+              </p>
+            )}
             <p className="font-bold text-lg mt-4">
-              Endereço de Entrega:
+              Total: <span>R$ {totalPrice.toFixed(2)}</span>
             </p>
+
+            <p className="font-bold text-lg mt-4">Endereço de Entrega:</p>
             <input
               type="text"
               className="w-full p-1 border-2 rounded my-2 text-lg"
@@ -129,9 +205,14 @@ export function Home() {
             <p className="text-red-500 hidden" id="address-warn">
               Digite seu endereço completo!
             </p>
+
             <div className="flex justify-between mt-6">
-              <button className="text-black text-xl" onClick={toggleCartModal}>Fechar</button>
-              <button className="bg-custom-green text-white px-4 py-2 rounded-md ml-2 text-xl">Finalizar Pedido</button>
+              <button className="text-black text-xl" onClick={toggleCartModal}>
+                Fechar
+              </button>
+              <button className="bg-custom-green text-white px-4 py-2 rounded-md ml-2 text-xl">
+                Finalizar Pedido
+              </button>
             </div>
           </div>
         </div>
@@ -140,11 +221,11 @@ export function Home() {
       {/* Footer */}
       <footer className="w-full text-xl bg-red-500 py-3 sticky bottom-0 flex justify-center">
         <button
-          className="flex text-white items-center gap-2 font-bold"
-          ref={cartButtonRef}
+          className="px-4 py-2 rounded shadow-lg flex items-center gap-2"
           onClick={toggleCartModal}
         >
-          ({cartCount}) Veja meu carrinho <ShoppingCart size={25} className="text-white" />
+          <ShoppingCart size={18} className="text-white" />
+          <span className="text-white">Ver Carrinho ({cartItens.length})</span>
         </button>
       </footer>
     </div>
