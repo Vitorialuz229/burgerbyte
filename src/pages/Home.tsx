@@ -68,6 +68,19 @@ export function Home() {
     );
   }, [cartItens]);
 
+  const removeFromCart = (id: number) => {
+    setCartItens((prevItens) => {
+      return prevItens
+        .map((item) =>
+          item.id === id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0); 
+    });
+  };
+  
+
   return (
     <div className="bg-gray-100 flex flex-col items-center">
       {/* Header */}
@@ -186,13 +199,15 @@ export function Home() {
                         R$ {(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
-                    <button className="px-4 py-2 text-black text-lg font-semibold">
+                    <button className="px-4 py-2 text-black text-lg font-semibold"
+                      onClick={() => removeFromCart(item.id)}
+                      >
                       Remover
                     </button>
                   </div>
                 ))
               ) : (
-                <p className="text-center text-gray-600">
+                <p className="text-center text-xl text-gray-600">
                   Seu carrinho está vazio.
                 </p>
               )}
