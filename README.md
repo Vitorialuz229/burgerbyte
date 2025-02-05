@@ -7,6 +7,14 @@ Este projeto é um **cardápio online** para uma lanchonete fictícia, utilizand
 
 ---  
 
+## 💄 Figma 
+
+O layout do projeto foi inspirado e projetado com base no artigo disponível no Figma [aqui](https://www.figma.com/design/tQ95RFOOlni5HiSUVmK2je/Restaurant---Sujeito-Programador-(Community)?node-id=50-23&t=1fDaFcmvoREy2Sou-0), que apresenta o design de um cardápio online para uma lanchonete fictícia.
+
+As imagens estão disponíveis nesse drive [aqui](https://drive.google.com/drive/folders/1XaqCmNgdXjUE7cLzqb53eeOdF7NyaHIi).
+
+---
+
 ## 🚀 Tecnologias Utilizadas  
 
 - ⚛️ **React** - Biblioteca para construção de interfaces de usuário.  
