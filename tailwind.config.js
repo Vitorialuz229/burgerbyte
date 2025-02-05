@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     fontFamily:{
+      'sans': ['Poppins', 'Roboto', 'sans-serif'],
     },
     extend: {
       backgroundImage: { 
