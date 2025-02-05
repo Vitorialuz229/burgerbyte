@@ -1,18 +1,26 @@
-# Scaffold React com React Router DOM e TailwindCSS
+# 🍔 Cardápio Online - Lanchonete Fictícia  
 
-Este projeto é um scaffold básico para iniciar o desenvolvimento de aplicações React utilizando **React Router DOM** para roteamento e **TailwindCSS** para estilização. Ele serve como ponto de partida para criar aplicações modernas e escaláveis com as ferramentas mencionadas.
+![React](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)  
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.2.7-blue?style=for-the-badge&logo=tailwindcss)  
+![Json-Server](https://img.shields.io/badge/JSON--Server-FakeAPI-orange?style=for-the-badge)  
+![Vite](https://img.shields.io/badge/Vite-4.3-purple?style=for-the-badge&logo=vite)  
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)  
 
----
+Este projeto é um **cardápio online** para uma lanchonete fictícia, utilizando **React, React Router DOM, TailwindCSS e Json-Server** para simular uma API.  
 
-## 🛠 Tecnologias Utilizadas
+---  
 
-- **React**: Biblioteca para construção de interfaces de usuário.
-- **React Router DOM**: Biblioteca para gerenciar o roteamento da aplicação.
-- **TailwindCSS**: Framework CSS utilitário para estilização rápida e responsiva.
+## 🚀 Tecnologias Utilizadas  
 
----
-
+- ⚛️ **React** - Biblioteca para construção de interfaces de usuário.  
+- 🚏 **React Router DOM** - Biblioteca para gerenciamento de rotas.  
+- 🎨 **TailwindCSS** - Framework CSS utilitário para estilização rápida e responsiva.  
+- 📡 **Json-Server** - Simula uma API REST para testes e desenvolvimento.  
+- ⚡ **Vite** - Build tool rápida para aplicações modernas.  
+- 📝 **TypeScript** - Superset do JavaScript que adiciona tipagem estática.  
 ## ⚡️ Como Executar o Projeto
+
+--- 
 
 ### Pré-requisitos
 
@@ -24,8 +32,8 @@ Este projeto é um scaffold básico para iniciar o desenvolvimento de aplicaçõ
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/stephhoel/scaffold-react-router-tailwind.git
-   cd scaffold-react-router-tailwind
+   git clone https://github.com/Vitorialuz229/burgerbyte.git
+   cd burgerbyte
    ```
 
 2. Instale as dependências:
@@ -36,7 +44,7 @@ Este projeto é um scaffold básico para iniciar o desenvolvimento de aplicaçõ
    yarn install
    ```
 
-3. Inicie o servidor de desenvolvimento:
+3. Inicie o servidor de desenvolvimento e a API simultaneamente:
 
    ```bash
    npm run dev
@@ -44,89 +52,41 @@ Este projeto é um scaffold básico para iniciar o desenvolvimento de aplicaçõ
    yarn run dev
    ```
 
-4. Abra o navegador e acesse: `http://localhost:5173/`
+   Isso irá rodar os seguintes comandos em paralelo:
 
----
+   * Vite para iniciar o servidor do frontend
+   * Json-Server para simular a API (porta 5000)
+  
+  Caso queira rodar o Json-Server separadamente, use:
 
-## 📂 Estrutura do Projeto
+   ```bash
+   npm run json-server
+   # ou
+   yarn json-server
+   ```
 
-```plaintext
-src/
-├── components/         # Componentes reutilizáveis
-├── pages/              # Páginas da aplicação
-│   ├── _layout.tsx     # Layout principal compartilhado entre as páginas
-│   ├── Home.tsx        # Página inicial
-│   ├── NotFound.tsx    # Página 404
-├── routes/             # Configuração de rotas
-├── index.css           # Estilos globais (inclui TailwindCSS)
-├── main.jsx            # Ponto de entrada da aplicação
-└── tailwind.config.js  # Configuração do TailwindCSS
+4. 📜 Scripts Disponíveis
+O projeto já vem com os seguintes scripts no package.json:
+
+```json
+"scripts": {
+  "dev": "concurrently \"vite\" \"npm run json-server\"",
+  "build": "tsc -b && vite build",
+  "json-server": "json-server --watch db.json --port 5000"
+}
 ```
 
----
+   * dev: Executa o Vite e o Json-Server simultaneamente.
+   * build: Compila o TypeScript e gera o build de produção.
+   * json-server: Roda o Json-Server para simular uma API no db.json
 
-## 📜 Configuração do Roteamento
-
-O arquivo de configuração das rotas está localizado em `src/routes/router.tsx`. O exemplo abaixo mostra como configurar uma rota simples:
-
-```jsx
-import { createBrowserRouter } from "react-router-dom"
-import { Home } from "../pages/Home"
-import { NotFound } from "../pages/NotFound"
-
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />
-  },
-  {
-    path: "/*",
-    element: <NotFound />
-  }
-])
-```
-
----
-
-## 🎨 Como Utilizar o TailwindCSS
-
-TailwindCSS já está configurado e pronto para uso. Basta adicionar as classes diretamente nos elementos.
-
-Exemplo:
-
-```jsx
-<div className="flex items-center justify-center h-screen bg-gray-100">
-  <h1 className="text-3xl font-bold text-blue-500">Bem-vindo ao Scaffold!</h1>
-</div>
-```
-
----
-
-## 🚀 Personalização
-
-1. **Configuração do TailwindCSS**:
-   O arquivo `tailwind.config.js` pode ser ajustado para atender às suas necessidades. Por exemplo, você pode adicionar novas cores ou configurações.
-
-2. **Estrutura das Rotas**:
-   Modifique ou adicione novas rotas no arquivo `src/routes/router.tsx`.
-
-3. **Componentes e Páginas**:
-   Adicione novos componentes em `src/components/` e páginas em `src/pages/`.
-
----
-
-## 📝 Contribuição
-
-Se você deseja contribuir com este scaffold:
-
-1. Faça um fork deste repositório.
-2. Crie uma branch para sua funcionalidade: `git checkout -b minha-feature`.
-3. Faça commit das suas alterações: `git commit -m "Minha nova feature"`.
-4. Envie para o repositório remoto: `git push origin minha-feature`.
-5. Abra um Pull Request.
-
----
+5. Abra o navegador e acesse: `http://localhost:5173/`
 
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
+
+
+👨‍💻 Autor
+
+Desenvolvido por Vitória Luz 🚀
