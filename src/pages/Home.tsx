@@ -85,6 +85,37 @@ export function Home() {
     return hours >= 18 && hours < 22;
   };
 
+  const handleCheckout = () => {
+    if (!isRestaurantOpen()) {
+      alert("Restaurante fechado no momento. Tente novamente mais tarde.");
+      return;
+    }
+
+    if (cartItens.length === 0) {
+      alert("Seu carrinho está vazio!");
+      return;
+    }
+
+    if (address.trim() === "") {
+      setIsAddressInvalid(true);
+      return;
+    }
+
+    const cartMessage = cartItens
+      .map(
+        (item) =>
+          `${item.name} - Quantidade: (${item.quantity}) - R$ ${item.price}`
+      )
+      .join(" | ");
+
+    const encodedMessage = encodeURIComponent(
+      `Olá! Meu pedido é: ${cartMessage}. Endereço de entrega: ${address}`
+    );
+
+    const phone = "62994334028";
+    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+  };
+
   return (
     <div className="bg-gray-100 flex flex-col items-center">
       {/* Header */}
@@ -273,6 +304,7 @@ export function Home() {
                       : "bg-gray-400 text-gray-200 cursor-not-allowed"
                   }`}
                   disabled={cartItens.length === 0 || address.trim() === ""}
+                  onClick={handleCheckout}
                 >
                   Finalizar Pedido
                 </button>
