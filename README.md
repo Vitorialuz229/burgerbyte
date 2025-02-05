@@ -23,7 +23,20 @@ As imagens estão disponíveis nesse drive [aqui](https://drive.google.com/drive
 - 📡 **Json-Server** - Simula uma API REST para testes e desenvolvimento.  
 - ⚡ **Vite** - Build tool rápida para aplicações modernas.  
 - 📝 **TypeScript** - Superset do JavaScript que adiciona tipagem estática.  
+- 🎭 **SweetAlert2** - Biblioteca para exibir alertas bonitos e personalizados.
 
+--- 
+
+## 🛠️ Funcionalidades  
+
+- ✅ **Exploração do Cardápio** – Visualize todos os produtos disponíveis no menu.  
+- ✅ **Carrinho de Compras Dinâmico** – Adicione produtos ao carrinho com apenas um clique.  
+- ✅ **Resumo Rápido do Carrinho** – Consulte os itens adicionados diretamente na página inicial.  
+- ✅ **Gerenciamento do Carrinho** – Acesse detalhes do pedido, ajuste quantidades ou remova itens.  
+- ✅ **Cadastro de Endereço** – Insira e valide o endereço de entrega antes de finalizar o pedido.  
+- ✅ **Horário de Funcionamento** – O sistema verifica se o restaurante está aberto antes de permitir pedidos.  
+- ✅ **Checkout Rápido via WhatsApp** – Gere e envie automaticamente o pedido para o WhatsApp do restaurante.  
+  
 --- 
 
 ## ⚡️ Como Executar o Projeto

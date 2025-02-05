@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"npm run json-server\"",
-    "build": "tsc -b && vite build",
-    "json-server": "json-server --watch db.json --port 5000"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "burguerbyte": "file:",
@@ -14,7 +14,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.0.2",
-    "sweetalert2": "^11.15.10"
+    "sweetalert2": "^11.15.10",
+    "vercel": "^41.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

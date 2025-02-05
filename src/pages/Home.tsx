@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ShoppingCart } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo from "./../../public/assets/logo.png";
 import { Hamburguer } from "../model/Hamburguer";
 import { Bebidas } from "../model/Bebidas";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 export function Home() {
   const [hamburgueres, setHamburgueres] = useState<Hamburguer[]>([]);
   const [bebidas, setBebidas] = useState<Bebidas[]>([]);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [address, setAddress] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
@@ -20,18 +21,44 @@ export function Home() {
     { id: number; name: string; price: number; quantity: number }[]
   >([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/hamburgueres")
-      .then((response) => response.json())
-      .then((data) => setHamburgueres(data || []))
-      .catch((error) => console.error("Erro ao buscar os hambúrgueres", error));
-  }, []);
+  //Usando o json-server
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/hamburgueres")
+  //     .then((response) => response.json())
+  //     .then((data) => setHamburgueres(data || []))
+  //     .catch((error) => console.error("Erro ao buscar os hambúrgueres", error));
+  // }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/bebidas")
+  //     .then((response) => response.json())
+  //     .then((data) => setBebidas(data || []))
+  //     .catch((error) => console.error("Erro ao buscar os bebidas", error));
+  // }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/bebidas")
-      .then((response) => response.json())
-      .then((data) => setBebidas(data || []))
-      .catch((error) => console.error("Erro ao buscar os bebidas", error));
+    const fetchHamburgueres = async () => {
+      try {
+        const response = await fetch('https://burgerbyte-api.vercel.app/api/hamburgueres');
+        const data = await response.json();
+        setHamburgueres(data);
+      } catch (error) {
+        console.error('Erro ao buscar hambúrgueres:', error);
+      }
+    };
+
+    const fetchBebidas = async () => {
+      try {
+        const response = await fetch('https://burgerbyte-api.vercel.app/api/bebidas');
+        const data = await response.json();
+        setBebidas(data);
+      } catch (error) {
+        console.error('Erro ao buscar bebidas:', error);
+      }
+    };
+
+    fetchHamburgueres();
+    fetchBebidas();
   }, []);
 
   const toggleCartModal = () => setIsModalOpen((prev) => !prev);
