@@ -114,6 +114,8 @@ export function Home() {
 
     const phone = "62994334028";
     window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+
+    setCartItens([]);
   };
 
   return (
