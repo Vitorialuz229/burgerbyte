@@ -166,53 +166,64 @@ export function Home() {
           className="bg-black/60 w-full h-full fixed top-0 left-0 flex items-center justify-center"
           ref={cartModelRef}
         >
-          <div className="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px] max-w-[500px]">
+          <div className="bg-white p-5 rounded-md min-w-[90%] md:min-w-[700px] max-w-[500px] flex flex-col">
             <h2 className="text-center font-bold text-2xl mb-4">
               Meu carrinho
             </h2>
-            {cartItens.length > 0 ? (
-              <ul>
-                {cartItens.map((item) => (
-                  <li
+            <div className="max-h-[300px] overflow-y-auto scrollbar-hide px-2">
+              {cartItens.length > 0 ? (
+                cartItens.map((item) => (
+                  <div
                     key={item.id}
                     className="flex justify-between items-center border-b py-2"
                   >
-                    <span className="text-lg font-semibold">
-                      {item.name} (x{item.quantity})
-                    </span>
-                    <span className="text-lg font-semibold">
-                      R$ {(item.price * item.quantity).toFixed(2)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-center text-gray-600">
-                Seu carrinho está vazio.
+                    <div className="flex flex-col">
+                      <span className="text-lg font-semibold">{item.name}</span>
+                      <span className="text-lg font-light">
+                        Quantidade: {item.quantity}
+                      </span>
+                      <span className="text-lg font-semibold">
+                        R$ {(item.price * item.quantity).toFixed(2)}
+                      </span>
+                    </div>
+                    <button className="px-4 py-2 text-black text-lg font-semibold">
+                      Remover
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-600">
+                  Seu carrinho está vazio.
+                </p>
+              )}
+            </div>
+            <div className="mt-4 pt-4">
+              <p className="font-bold text-lg">
+                Total: <span>R$ {totalPrice.toFixed(2)}</span>
               </p>
-            )}
-            <p className="font-bold text-lg mt-4">
-              Total: <span>R$ {totalPrice.toFixed(2)}</span>
-            </p>
 
-            <p className="font-bold text-lg mt-4">Endereço de Entrega:</p>
-            <input
-              type="text"
-              className="w-full p-1 border-2 rounded my-2 text-lg"
-              placeholder="Endereço de entrega"
-              id="address"
-            />
-            <p className="text-red-500 hidden" id="address-warn">
-              Digite seu endereço completo!
-            </p>
+              <p className="font-bold text-lg mt-4">Endereço de Entrega:</p>
+              <input
+                type="text"
+                className="w-full p-1 border-2 rounded my-2 text-lg"
+                placeholder="Endereço de entrega"
+                id="address"
+              />
+              <p className="text-red-500 hidden" id="address-warn">
+                Digite seu endereço completo!
+              </p>
 
-            <div className="flex justify-between mt-6">
-              <button className="text-black text-xl" onClick={toggleCartModal}>
-                Fechar
-              </button>
-              <button className="bg-custom-green text-white px-4 py-2 rounded-md ml-2 text-xl">
-                Finalizar Pedido
-              </button>
+              <div className="flex justify-between mt-6">
+                <button
+                  className="text-black text-xl"
+                  onClick={toggleCartModal}
+                >
+                  Fechar
+                </button>
+                <button className="bg-custom-green text-white px-4 py-2 rounded-md ml-2 text-xl">
+                  Finalizar Pedido
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -221,7 +232,7 @@ export function Home() {
       {/* Footer */}
       <footer className="w-full text-xl bg-red-500 py-3 sticky bottom-0 flex justify-center">
         <button
-          className="px-4 py-2 rounded shadow-lg flex items-center gap-2"
+          className="px-4 py-2 flex items-center gap-2"
           onClick={toggleCartModal}
         >
           <ShoppingCart size={18} className="text-white" />
