@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import logo from "../assets/logo.png";
 import { Hamburguer } from "../model/Hamburguer";
 import { Bebidas } from "../model/Bebidas";
+import Swal from "sweetalert2";
 
 export function Home() {
   const [hamburgueres, setHamburgueres] = useState<Hamburguer[]>([]);
@@ -87,17 +88,30 @@ export function Home() {
 
   const handleCheckout = () => {
     if (!isRestaurantOpen()) {
-      alert("Restaurante fechado no momento. Tente novamente mais tarde.");
+      Swal.fire({
+        icon: "error",
+        title: "Restaurante fechado!",
+        text: "Tente novamente mais tarde.",
+      });
       return;
     }
 
     if (cartItens.length === 0) {
-      alert("Seu carrinho está vazio!");
+      Swal.fire({
+        icon: "warning",
+        title: "Carrinho vazio!",
+        text: "Adicione itens antes de finalizar o pedido.",
+      });
       return;
     }
 
     if (address.trim() === "") {
       setIsAddressInvalid(true);
+      Swal.fire({
+        icon: "error",
+        title: "Endereço inválido!",
+        text: "Preencha seu endereço de entrega.",
+      });
       return;
     }
 
@@ -116,6 +130,12 @@ export function Home() {
     window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
 
     setCartItens([]);
+
+    Swal.fire({
+      icon: "success",
+      title: "Pedido enviado!",
+      text: "Aguarde a confirmação do restaurante pelo WhatsApp.",
+    });
   };
 
   return (
