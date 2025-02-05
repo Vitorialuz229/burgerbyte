@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       backgroundImage: { 
-        "home": "url('/src/assets/bg.png')",
+        "home": "url('./public/assets/bg.png')",
       },
       colors: {
         'custom-green': '#54CC0A',
