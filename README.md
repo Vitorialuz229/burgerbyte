@@ -5,6 +5,18 @@
 
 Este projeto é um **cardápio online** para uma lanchonete fictícia, utilizando **React, React Router DOM, TailwindCSS e Json-Server** para simular uma API.  
 
+![alt text](image-1.png)
+
+![alt text](image.png)
+---  
+
+## 🚀 Deploy no Vercel
+O projeto foi deployado no Vercel! Agora, você pode acessar a versão online do cardápio no link abaixo:
+
+🌐 [Acesse o Cardápio Online](https://burgerbyte-56bo.vercel.app/)
+
+Como o vercel não aceita json-server foi desenvolvido uma api apenas para retornar a listagem da mesma maneira que o json-vercel. O link da api está [aqui](https://github.com/Vitorialuz229/burgerbyteApi)
+
 ---  
 
 ## 💄 Figma 
