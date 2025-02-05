@@ -8,8 +8,9 @@ export function Home() {
   const [hamburgueres, setHamburgueres] = useState<Hamburguer[]>([]);
   const [bebidas, setBebidas] = useState<Bebidas[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
+  const [address, setAddress] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isAddressInvalid, setIsAddressInvalid] = useState(false);
 
   const cartButtonRef = useRef<HTMLButtonElement | null>(null);
   const cartModelRef = useRef<HTMLDivElement | null>(null);
@@ -72,14 +73,11 @@ export function Home() {
     setCartItens((prevItens) => {
       return prevItens
         .map((item) =>
-          item.id === id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
         )
-        .filter((item) => item.quantity > 0); 
+        .filter((item) => item.quantity > 0);
     });
   };
-  
 
   return (
     <div className="bg-gray-100 flex flex-col items-center">
@@ -188,20 +186,21 @@ export function Home() {
                 cartItens.map((item) => (
                   <div
                     key={item.id}
-                    className="flex justify-between items-center border-b py-2"
+                    className="flex justify-between items-center py-3"
                   >
                     <div className="flex flex-col">
                       <span className="text-lg font-semibold">{item.name}</span>
                       <span className="text-lg font-light">
                         Quantidade: {item.quantity}
                       </span>
-                      <span className="text-lg font-semibold">
+                      <span className="text-lg font-light">
                         R$ {(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
-                    <button className="px-4 py-2 text-black text-lg font-semibold"
+                    <button
+                      className="px-4 py-2 text-black text-lg font-light"
                       onClick={() => removeFromCart(item.id)}
-                      >
+                    >
                       Remover
                     </button>
                   </div>
@@ -212,19 +211,39 @@ export function Home() {
                 </p>
               )}
             </div>
-            <div className="mt-4 pt-4">
+            <div className="mt-1">
               <p className="font-bold text-lg">
                 Total: <span>R$ {totalPrice.toFixed(2)}</span>
               </p>
 
-              <p className="font-bold text-lg mt-4">Endereço de Entrega:</p>
+              <p className="font-bold text-lg mt-4 mb-0">
+                Endereço de Entrega:
+              </p>
               <input
                 type="text"
-                className="w-full p-1 border-2 rounded my-2 text-lg"
+                className={`w-full p-1 border-2 rounded my-2 text-lg ${
+                  isAddressInvalid ? "border-red-500" : "border-gray-300"
+                }`}
                 placeholder="Endereço de entrega"
                 id="address"
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                  if (e.target.value.trim() !== "") {
+                    setIsAddressInvalid(false);
+                  }
+                }}
+                onBlur={() => {
+                  if (address.trim() === "") {
+                    setIsAddressInvalid(true);
+                  }
+                }}
               />
-              <p className="text-red-500 hidden" id="address-warn">
+              <p
+                className={`text-red-500 text-base ${
+                  isAddressInvalid ? "block" : "hidden"
+                }`}
+              >
                 Digite seu endereço completo!
               </p>
 
@@ -235,7 +254,14 @@ export function Home() {
                 >
                   Fechar
                 </button>
-                <button className="bg-custom-green text-white px-4 py-2 rounded-md ml-2 text-xl">
+                <button
+                  className={`px-4 py-2 rounded-md ml-2 text-xl ${
+                    cartItens.length > 0 && address.trim() !== ""
+                      ? "bg-custom-green text-white"
+                      : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                  }`}
+                  disabled={cartItens.length === 0 || address.trim() === ""}
+                >
                   Finalizar Pedido
                 </button>
               </div>
