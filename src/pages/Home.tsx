@@ -79,6 +79,12 @@ export function Home() {
     });
   };
 
+  const isRestaurantOpen = () => {
+    const now = new Date();
+    const hours = now.getHours();
+    return hours >= 18 && hours < 22;
+  };
+
   return (
     <div className="bg-gray-100 flex flex-col items-center">
       {/* Header */}
@@ -94,9 +100,15 @@ export function Home() {
         <span className="text-white text-sm md:text-lg mt-2 font-light">
           Av. Fernando Costa, 42, Vila Jaiara, Anápolis - GO
         </span>
-        <div className="bg-custom-green items-center flex justify-center mt-4 px-4 p-2 rounded shadow-lg">
+        <div
+          className={`${
+            isRestaurantOpen() ? "bg-custom-green" : "bg-red-500"
+          } items-center flex justify-center mt-4 px-4 p-2 rounded shadow-lg`}
+        >
           <span className="text-sm sm:text-base font-medium text-white">
-            Seg á Dom - 18:00 as 22:00
+            {isRestaurantOpen()
+              ? "Aberto agora - Seg à Dom 18:00 às 22:00"
+              : "Fechado no momento"}
           </span>
         </div>
       </header>
