@@ -1,10 +1,7 @@
 # 🍔 Cardápio Online - Lanchonete Fictícia  
 
-![React](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)  
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.2.7-blue?style=for-the-badge&logo=tailwindcss)  
-![Json-Server](https://img.shields.io/badge/JSON--Server-FakeAPI-orange?style=for-the-badge)  
-![Vite](https://img.shields.io/badge/Vite-4.3-purple?style=for-the-badge&logo=vite)  
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)  
+| ![React](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react) | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.2.7-blue?style=for-the-badge&logo=tailwindcss) | ![Json-Server](https://img.shields.io/badge/JSON--Server-FakeAPI-orange?style=for-the-badge) | ![Vite](https://img.shields.io/badge/Vite-4.3-purple?style=for-the-badge&logo=vite) | ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript) |
+|---|---|---|---|---|
 
 Este projeto é um **cardápio online** para uma lanchonete fictícia, utilizando **React, React Router DOM, TailwindCSS e Json-Server** para simular uma API.  
 
@@ -18,9 +15,10 @@ Este projeto é um **cardápio online** para uma lanchonete fictícia, utilizand
 - 📡 **Json-Server** - Simula uma API REST para testes e desenvolvimento.  
 - ⚡ **Vite** - Build tool rápida para aplicações modernas.  
 - 📝 **TypeScript** - Superset do JavaScript que adiciona tipagem estática.  
-## ⚡️ Como Executar o Projeto
 
 --- 
+
+## ⚡️ Como Executar o Projeto
 
 ### Pré-requisitos
 
